@@ -68,6 +68,6 @@ async def get_user_ip(request: Request):
     user_ip = request.client.host  # Get the user's real IP
     return {"user_ip": user_ip}
 
-# Run the FastAPI app
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    port = int(os.environ.get("PORT", 8000))  # Use Render's PORT variable
+    uvicorn.run(app, host="0.0.0.0", port=port)
